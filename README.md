@@ -7,12 +7,15 @@ docker build -t mysql-image -f api/db/Dockerfile .
 ```console
 docker run -d --rm --name mysql-container mysql-image 
 ```
-
 ## INSTANCIAR A IMAGEM CRIANDO O CONTAINER COM VOLUME
+### Win
 ```console
 docker run -d -v c:/projectsMazuco/docker-introducao/api/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
 ```
-
+### Linux
+```console
+docker run -d -v /home/mazuco/projectsMazuco/docker-introducao/api/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
+```
 ## CHAMAR O SCRIPT PARA CRIAR A BASE E POPULAR
 
 ```console
@@ -43,8 +46,13 @@ docker build -t node-image -f api/Dockerfile .
 
 
 ## CRIAR O CONTAINER DA IMAGEM DA API COM VOLUME
+### Windows
 ```console
 docker run -d -v c:/projectsMazuco/docker-introducao/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
+```
+### Linux
+```console
+docker run -d -v /home/mazuco/projectsMazuco/docker-introducao/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
 ```
 
 
