@@ -44,7 +44,7 @@ docker build -t node-image -f api/Dockerfile .
 
 ## CRIAR O CONTAINER DA IMAGEM DA API COM VOLUME
 ```console
-docker run -d -v c:/projectsMazuco/docker-introducao/api:/home/node/app -p 9001:9001 --rm --name node-container node-image
+docker run -d -v c:/projectsMazuco/docker-introducao/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
 ```
 
 
@@ -54,3 +54,12 @@ docker run -d -v c:/projectsMazuco/docker-introducao/api:/home/node/app -p 9001:
 npm install --save-dev mysql2
 ```
 https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
+
+
+
+## AO FINAL CRIAR A IMAGEM E O CONTAINER DO PHP
+```console
+docker build -t php-image -f website/Dockerfile .
+
+docker run -d -v c:/projectsMazuco/docker-introducao/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
+```
