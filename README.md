@@ -70,12 +70,13 @@ https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-a
 docker build -t php-image -f website/Dockerfile .
 ```
 
-## CRIAR A CONTAINER PHP WIN
+## CRIAR A CONTAINER PHP 
+### Windows
 ```console
 docker run -d -v c:/projectsMazuco/docker-introducao/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
 ```
 
-## CRIAR A CONTAINER PHP LINUX
+### Linux
 ```console
 docker run -d -v /home/mazuco/projectsMazuco/docker-introducao/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
 ```
