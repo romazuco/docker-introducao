@@ -10,11 +10,11 @@ docker run -d --rm --name mysql-container mysql-image
 ## INSTANCIAR A IMAGEM CRIANDO O CONTAINER COM VOLUME
 ### Win
 ```console
-docker run -d -v c:/projectsMazuco/docker-introducao/api/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
+docker run -d -v c:/projectsMazuco/volumes/docker-introducao/data:/var/lib/mysql --rm --name mysql-container mysql-image
 ```
 ### Linux
 ```console
-docker run -d -v /home/mazuco/projectsMazuco/docker-introducao/api/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
+docker run -d -v /home/mazuco/projectsMazuco/volumes/docker-introducao/data:/var/lib/mysql --rm --name mysql-container mysql-image
 ```
 ## CHAMAR O SCRIPT PARA CRIAR A BASE E POPULAR
 
@@ -65,9 +65,17 @@ https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-a
 
 
 
-## AO FINAL CRIAR A IMAGEM E O CONTAINER DO PHP
+## CRIAR A IMAGEM PHP
 ```console
 docker build -t php-image -f website/Dockerfile .
+```
 
+## CRIAR A CONTAINER PHP WIN
+```console
 docker run -d -v c:/projectsMazuco/docker-introducao/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
+```
+
+## CRIAR A CONTAINER PHP LINUX
+```console
+docker run -d -v /home/mazuco/projectsMazuco/docker-introducao/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
 ```
