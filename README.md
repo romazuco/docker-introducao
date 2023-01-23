@@ -8,7 +8,7 @@ docker build -t mysql-image -f api/db/Dockerfile .
 docker run -d --rm --name mysql-container mysql-image 
 ```
 ## INSTANCIAR A IMAGEM CRIANDO O CONTAINER COM VOLUME
-### Win
+### Windows
 ```console
 docker run -d -v c:/projectsMazuco/volumes/docker-introducao/data:/var/lib/mysql --rm --name mysql-container mysql-image
 ```
